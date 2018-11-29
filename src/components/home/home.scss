@@ -1,0 +1,87 @@
+@import '../../scss/_deps';
+
+.navbar {
+    position: fixed;
+    background: rgba(map-get($colors, 'primary'), .8);
+    width: 100%;
+    z-index: 99;
+
+    .navbar-logo h1 {
+        @extend .font-50;
+        font-weight: bold;
+        color: map-get($colors, 'white');
+    }
+
+    .navbar-links {
+        @extend .row, .valign-middle, .halign-right;
+
+        a {
+            @extend .mg-sides-5, .font-13;
+            
+            color: map-get($colors, 'white');
+        }
+    }
+
+    .navbar-button {
+        @extend .pad-all-10;
+        border: 2px solid lighten(map-get($colors, 'primary'), 15%);
+        border-radius: 24px 24px 24px 0;
+        background: rgba(map-get($colors, 'primary'), .1);
+        color: map-get($colors, 'white');
+        font-weight: bold;
+    }
+}
+
+.home {
+    .home-fundo {
+        position: relative;
+        background: url('../img/welcome-bg.png') no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+        height: 900px;
+        width: 100%;
+        z-index: 1;
+
+        .home-smartphone {
+            .smartphone {
+                position: absolute;
+                top: 492px;
+                right: 85px;
+                width: 45%; 
+            }
+        }
+
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .home-smartphone {
+                .smartphone {
+                    position: absolute;
+                    top: 632px;
+                    right: 85px;
+                    width: 45%; 
+                }
+            }
+        }
+
+        @media (max-width: 991px) and (min-width: 768px) {
+            .home-smartphone {
+                .smartphone {
+                    position: absolute;
+                    top: 632px;
+                    right: 85px;
+                    width: 45%; 
+                }
+            }
+        }
+
+        @media (max-width: 767px) and (min-width: 480px) {
+            .home-smartphone {
+                .smartphone {
+                    position: absolute;
+                    top: 682px;
+                    right: 85px;
+                    width: 45%; 
+                }
+            }
+        }
+    }   
+}

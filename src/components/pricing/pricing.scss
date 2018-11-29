@@ -1,0 +1,44 @@
+@import '../../scss/_deps';
+
+.pricing {
+    @extend .font-16, .cl-gray;
+    line-height: 1.8;
+
+    .pricing-title {
+        @extend .pad-both-80, .text-center, .font-22;
+        color: darken(map-get($colors, 'primary'), 10%);
+
+        .pricing-title-trace {
+            @extend .bg-secundary;
+            display: block;
+            width: 80px;
+            height: 2px;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+    }
+
+    .pricing-plan {
+        @extend .text-center;
+
+        .pricing-box-plan {
+
+            .box-plan-description{
+            }
+
+            .box-plan-button {
+                background-color: darken(map-get($colors, 'primary'), 10%);
+                border-radius: 0 0 20px;
+
+                .plan-button {
+                    @extend .pad-both-10, .cl-white, .font-16;
+                    background: transparent;
+                }
+
+                &:hover {  
+                    @extend .bg-primary; 
+                }
+            }
+        }
+    }
+}

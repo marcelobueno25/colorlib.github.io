@@ -1,0 +1,87 @@
+@import '../../scss/_deps';
+
+.features {
+    @extend .font-16, .cl-gray;
+    line-height: 1.5;
+
+    .features-titulo {
+        @extend .font-22, .text-center, .pad-both-80;
+        color: darken(map-get($colors, 'primary'), 10%);
+
+        .features-titulo-barra {
+            @extend .bg-secundary, .mg-bottom-10;
+            display: block;
+            width: 80px;
+            height: 2px;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+    }
+
+    .features-lista {
+        .features-quadrado {
+            @extend .pad-both-20, .pad-sides-5;
+
+            .features-quadrado-titulo {
+                @extend .font-20;
+                display: inline;
+                color: darken(map-get($colors, 'primary'), 10%);
+            }
+
+            .features-quadrado-icon {
+                @extend .font-30, .pad-right-10, .cl-secundary, .mg-bottom-10;
+            }
+        }
+    }
+
+    .features-video {
+        @extend .pad-top-80;
+        position: relative;
+        bottom: -100px;
+        z-index: 1;
+
+        .features-video-play {
+            border: 20px solid map-get($colors, 'white');
+            border-radius: 20px 0;
+            height: 650px;
+            background: url('../img/video.jpg') no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            .video-play-btn {
+                @extend .font-80, .cl-secundary;
+                transition: 200ms;
+
+                &:hover {
+                    @extend .cl-primary;
+                }
+            }
+        }
+    }
+
+    .features-barra-video {
+        @extend .pad-all-40, .bg-primary;
+        padding: 180px 0 80px;
+
+        .features-barra-text {
+            @extend .font-18, .cl-white;
+
+            .features-quadrado-barra {
+                .quadrado-barra-number {
+                    @extend .font-60, .mg-sides-10;
+                }
+
+                .quadrado-barra-icon {
+                    @extend .pad-all-5;
+
+                    .barra-icon {
+                        @extend .font-36;
+                    }
+                }
+            }
+        }
+    }
+}
