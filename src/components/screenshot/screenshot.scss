@@ -1,55 +1,68 @@
 @import '../../scss/_deps';
 
-.swiper-container {
-    @extend .pad-top-50;
-    width: 90%;
-    height: 700px;
-}
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    opacity: .7;
-    height: 411px;
-    width: 187px;
-    margin: auto 0;
-}
+.screenshot {
 
-.swiper-slide-active {
-    opacity: 1;
-    height: 511px;
-    width: 287px;
-}
+    .swiper-container {
+        @extend .pad-top-50;
+        height: 100%;
+        width: 90%;
+    }
 
-.swiper-pagination-bullet {
-    background: transparent;
-    border: 2px solid rgba(0, 0, 0, .4);
-    opacity: 1;
-    height: 11px;
-    width: 11px;
-}
+    .screenshot .swiper-container {
+        width: 90%;
+        height: 80vh;
+    }
 
-.swiper-pagination-bullet-active {
-    background: #fc397d;
-    border: 2px solid #fc397d;
+    .swiper-slide {
+        @extend .text-center;
+        opacity: .7;
+        height: 100%;
+        width: 100%;
+        transform: scale(.8);
+    }
 
-}
+    .swiper-slide-active {
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+        transform: scale(1)
+    }
 
-.about-titulo {
-    @extend .pad-top-80, .text-center, .font-22;
-    color: darken(map-get($colors, 'primary'), 10%);
-}
+    .swiper-pagination {
+        position: relative;
+        margin: 30px 0;
+    }
 
-.about-titulo-barra {
-    @extend .bg-secundary;
-    display: block;
-    width: 80px;
-    height: 2px;
-    margin: 0 auto;
-    margin-top: 15px;
-}
+    .swiper-pagination-bullet {
+        background: transparent;
+        border: 2px solid rgba(0, 0, 0, .4);
+        opacity: 1;
+        height: 9px;
+        width: 9px;
+    }
 
-img {
-    height: 100%;
+    .swiper-pagination-bullet-active {
+        background: #fc397d;
+        border: 2px solid #fc397d;
+
+    }
+
+    .screenshot-title {
+        @extend .pad-top-80, .text-center, .font-22;
+        color: darken(map-get($colors, 'primary'), 10%);
+    }
+
+    .screenshot-title-trace {
+        @extend .bg-secundary;
+        display: block;
+        width: 80px;
+        height: 2px;
+        margin: 15px auto;
+    }
+
+    .slide-img {
+        height: 100%;
+        width: 100%;
+    }
 }

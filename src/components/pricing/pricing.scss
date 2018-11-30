@@ -22,12 +22,68 @@
         @extend .text-center;
 
         .pricing-box-plan {
+            margin: 0;
+            padding: 0 1px;
+            background: #fff;
+            border: 1px solid #ebebeb;
+            border-radius: 30px 30px 30px 0;
 
-            .box-plan-description{
+            .box-plan-money {
+                @extend .pad-both-30;
+                border-radius: 30px 30px 0 0;
+
+                .plan-money {
+                    @extend .font-44, .cl-secundary;
+                }
+
+                .plan-money-text {
+                    @extend .font-16, .cl-primary;
+                    font-weight: bold;
+                }
+            }
+
+            .special-plan {
+                @extend .bg-amethyst, .pad-both-30;
+                border-radius: 30px 30px 0 0;
+
+                .special-plan-money {
+                    @extend .font-44, .cl-white;
+                }
+
+                .special-plan-text {
+                    @extend .font-16, .cl-white;
+                    font-weight: bold;
+                }
+            }
+
+            .special-plan-button{
+                @extend .bg-amethyst;
+                border-radius: 0 0 20px;
+
+                .special-button{
+                    @extend .pad-both-10, .cl-white, .font-16;
+                    background: transparent;
+                }
+
+                &:hover {  
+                    @extend .bg-kimberly; 
+                }
+            }
+
+            .box-plan-description { 
+                .plan-description {
+                    line-height: 2.7;
+
+                    li {
+                        background: #fff;
+                        border: 1px solid #ebebeb;
+                        border-radius: 30px 30px 30px 0;
+                    }
+                }
             }
 
             .box-plan-button {
-                background-color: darken(map-get($colors, 'primary'), 10%);
+                @extend .bg-kimberly;
                 border-radius: 0 0 20px;
 
                 .plan-button {
@@ -36,7 +92,7 @@
                 }
 
                 &:hover {  
-                    @extend .bg-primary; 
+                    @extend .bg-amethyst; 
                 }
             }
         }
