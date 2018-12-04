@@ -1,7 +1,7 @@
 @import '../../scss/_deps';
 
 
-.testimonials{
+.testimonials {
     @extend .mg-top-100, .font-18, .text-center;
 
     .swiper-container .swiper-slide .phrases {
@@ -33,7 +33,7 @@
         }
 
         .testimonials-phrases {
-            .phrases{
+            .phrases {
                 position: absolute;
                 top: 0;
                 left: -300px;
@@ -42,4 +42,28 @@
         }
     }
 
+    .testimonials-trace {
+        @extend .pad-both-50, .bg-primary, .mg-both-100;
+        background: linear-gradient(to left, #7873ed, #a865e1);
+
+        .testimonials-trace-text {
+            color: map-get($colors, 'white');
+        }
+        
+        .testimonials-trace-button {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .trace-button {
+                @extend .pad-all-10;
+                border-radius: 24px 24px 24px 0;
+                background: map-get($colors, 'white');
+                color: map-get($colors, 'secundary');
+                font-weight: bold;
+                height: 50px;
+                width: 170px;
+            }
+        }
+    }
 }

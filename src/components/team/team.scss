@@ -1,0 +1,51 @@
+@import '../../scss/_deps';
+
+.team {
+    @extend .font-16, .cl-gray;
+    line-height: 1.8;
+
+    .team-title {
+        @extend .pad-both-80, .text-center, .font-22;
+        color: darken(map-get($colors, 'primary'), 10%);
+
+        .team-title-trace {
+            @extend .bg-secundary;
+            display: block;
+            width: 80px;
+            height: 2px;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+    }
+
+    .team-box {
+        .team-box-square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            border-radius: 20%;
+            height: 200px;
+            width: 100%;
+
+            &:hover {
+                opacity: .2;
+            }
+
+            .team-box-square {
+                height: 100%;
+                widows: 100%;
+
+                img {
+                    height: 200px;
+                    width: 100%;
+                }
+
+                .box-square-networks {
+                    @extend .pad-sides-10, .font-20, .cl-primary;
+                    opacity: 1;
+                }
+            }  
+        }
+    }
+}
