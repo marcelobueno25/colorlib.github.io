@@ -56,11 +56,11 @@
                 }
             }
 
-            .special-plan-button{
+            .special-plan-button {
                 @extend .bg-amethyst;
                 border-radius: 0 0 20px;
 
-                .special-button{
+                .special-button {
                     @extend .pad-both-10, .cl-white, .font-16;
                     background: transparent;
                 }
