@@ -1,6 +1,7 @@
 @import '../../scss/_deps';
 
 .navbar {
+    @extend .bg-white;
     position: fixed;
     background: rgba(map-get($colors, 'primary'), .8);
     width: 100%;

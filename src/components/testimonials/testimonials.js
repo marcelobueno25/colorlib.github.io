@@ -13,7 +13,7 @@
 var swiper = new Swiper('.testimonials .swiper-container', {
   slidesPerView: 3,
   centeredSlides: true,
-  spaceBetween: 30,
+  spaceBetween: 0,
   loop: true,
   pagination: {
     el: '.swiper-pagination',

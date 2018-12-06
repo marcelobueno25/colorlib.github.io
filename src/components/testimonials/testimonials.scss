@@ -2,48 +2,73 @@
 
 
 .testimonials {
-    @extend .mg-top-100, .font-18, .text-center;
+    @extend .pad-top-100, .font-18, .text-center, .bg-white, .pad-bottom-30;
 
-    .swiper-container .swiper-slide .phrases {
-        opacity: 0;
-    }
-     .swiper-container .swiper-slide-active .phrases {
-        opacity: 1;
-    }
 
-    .swiper-container .swiper-slide-active .people {
-        width: 100px;
-        height: 100px;
+
+    .swiper-container {
+      .swiper-slide {
+        .pharases-align {
+            opacity: 0;
+        }
+      }
+      .swiper-slide-active {
+        .pharases-align {
+            opacity: 1;
+        }
+        .people {
+            width: 100px;
+            height: 100px;
+        }
+      }
     }
 
     .testimonials-people {
         display: flex;
         align-items: center;
-        justify-content: center;
         flex-direction: column;
         width: 350px;
-        height: 350px;
+        height: 650px;
 
-        .people {
-            border: 2px solid red;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-top: 60px;
+        .image {
+                overflow: hidden;
+                margin-top: 60px;
+                border: 2px solid white;
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+
+            .people {
+                width: 100%;
+                height: 100%;
+            }
         }
 
         .testimonials-phrases {
+            line-height: 1.5;
+
             .phrases {
+                top: 80px;
                 position: absolute;
-                top: 0;
                 left: -300px;
                 right: -300px;
+            }
+
+            .quoto {
+                @extend .font-44, .cl-primary;
+                display: block;
+            }
+
+            .pharases-star {
+                @extend .font-16;
+                color: yellow;
+                padding-top: 100px;
             }
         }
     }
 
     .testimonials-trace {
-        @extend .pad-both-50, .bg-primary, .mg-both-100;
+        @extend .pad-both-50, .bg-primary;
         background: linear-gradient(to left, #7873ed, #a865e1);
 
         .testimonials-trace-text {

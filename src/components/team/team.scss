@@ -1,7 +1,7 @@
 @import '../../scss/_deps';
 
 .team {
-    @extend .font-16, .cl-gray;
+    @extend .font-16, .cl-gray, .bg-white;
     line-height: 1.8;
 
     .team-title {

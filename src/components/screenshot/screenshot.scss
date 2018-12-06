@@ -2,6 +2,7 @@
 
 
 .screenshot {
+    @extend .bg-white;
 
     .swiper-container {
         @extend .pad-top-50;

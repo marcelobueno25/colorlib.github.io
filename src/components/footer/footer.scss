@@ -1,3 +1,120 @@
 @import '../../scss/_deps';
 
-// CSS DO FOOTER
+// CSS DO 
+.footer-contact {
+    @extend .font-16, .pad-top-100, .cl-gray, .bg-white;
+    line-height: 1.5;
+    z-index: 99;
+    margin-bottom: 400px;
+
+    .footer-contact-shadow {
+        @extend .pad-bottom-50;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .2);
+
+        .contact-title {
+            @extend .font-22;
+            color: darken(map-get($colors, 'primary'), 10%);
+
+            .contact-title-trace {
+                @extend .bg-secundary, .mg-bottom-10, .mg-top-15;
+                display: block;
+                width: 80px;
+                height: 2px;
+            }
+        }
+
+        .contact-text {
+            @extend .pad-both-50;
+        }
+
+        .contact-featured {
+            @extend .cl-primary;
+            line-height: 2.2;
+        }
+
+        .contact-inputs {
+            .form-control {
+                @extend .pad-all-20, .mg-both-10, .font-16;
+                font-family: '#{montserrat-regular}';
+                border: 1px solid #ced4da;
+                border-radius: 30px 30px 30px 0;
+                width: 100%;
+
+                &:focus {
+                    border: 1px solid #80bdff;
+                    box-shadow: 0 0 0 3px #B8dafd;
+                }
+
+                &::placeholder {
+                    opacity: .6;
+                }
+            }
+
+            .form-control-large {
+                @extend .pad-bottom-80;
+            }
+        }
+
+        .contact-inputs-button {
+            @extend .cl-white, .bg-secundary, .pad-all-15, .text-center;
+            display: inline-block;
+            border-radius: 23px 23px 23px 0;
+            font-weight: bold;
+            transition: 500ms;  
+            width: 100%;    
+            max-width: 185px;
+
+            &:hover {
+                background-color: darken(map-get($colors, 'primary'), 10%);
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    height: 380px;
+    line-height: 1.8;
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .footer-ca {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .footer-text {
+            @extend .font-70;
+            font-weight: bold;
+            color: darken(map-get($colors, 'primary'), 10%);
+        }
+
+        .footer-social {
+            display: flex;
+
+            .footer-networks {
+                @extend .mg-sides-5, .text-center, .cl-white, .bg-primary;
+                border-radius: 10px 10px 10px 0;
+                line-height: 40px;
+                height: 40px;
+                width: 40px;
+
+                &:hover {
+                    @extend .bg-secundary;
+                }
+            }
+        }
+
+        .footer-menu {
+            @extend .pad-both-10;
+
+            .footer-menu-link {
+                @extend .cl-primary;
+            }
+        }
+    }
+}
