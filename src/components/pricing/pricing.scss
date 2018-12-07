@@ -28,12 +28,21 @@
             border: 1px solid #ebebeb;
             border-radius: 30px 30px 30px 0;
 
+            &:hover .box-plan-button{
+                @extend .bg-amethyst;
+                transition: 500ms;
+            }
+
             .box-plan-money {
                 @extend .pad-both-30;
                 border-radius: 30px 30px 0 0;
 
                 .plan-money {
                     @extend .font-44, .cl-secundary;
+
+                    .money {
+                        font-size: 16px;
+                    }
                 }
 
                 .plan-money-text {
@@ -48,6 +57,9 @@
 
                 .special-plan-money {
                     @extend .font-44, .cl-white;
+                        .money {
+                            font-size: 16px;
+                        }
                 }
 
                 .special-plan-text {
@@ -89,10 +101,6 @@
                 .plan-button {
                     @extend .pad-both-10, .cl-white, .font-16;
                     background: transparent;
-                }
-
-                &:hover {  
-                    @extend .bg-amethyst; 
                 }
             }
         }
