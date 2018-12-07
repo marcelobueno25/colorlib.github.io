@@ -4,49 +4,49 @@
     @extend .font-16, .cl-gray, .bg-white;
     line-height: 1.5;
 
-    .features-titulo {
+    //TITLE AWESOME FEATURES
+    .features-title {
         @extend .font-22, .text-center, .pad-both-80;
         color: darken(map-get($colors, 'primary'), 10%);
 
-        .features-titulo-barra {
-            @extend .bg-secundary, .mg-bottom-10;
+        .features-title-trace {
+            @extend .bg-secundary, .mg-both-15;
             display: block;
+            margin: 0 auto;
             width: 80px;
             height: 2px;
-            margin: 0 auto;
-            margin-top: 15px;
         }
     }
 
-    .features-lista {
-        .features-quadrado {
+    //BOXs AWESOME FEATURES
+    .features-list {
+        .features-box {
             @extend .pad-both-20, .pad-sides-5;
 
-            .features-quadrado-titulo {
+            .features-box-title {
                 @extend .font-20;
                 display: inline;
                 color: darken(map-get($colors, 'primary'), 10%);
             }
 
-            .features-quadrado-icon {
+            .features-box-icon {
                 @extend .font-30, .pad-right-10, .cl-secundary, .mg-bottom-10;
             }
         }
     }
 
+    //VIDEO PLAY
     .features-video {
         @extend .pad-top-80;
         position: relative;
         bottom: -100px;
-        z-index: 1;
 
         .features-video-play {
+            display: flex;
             border: 20px solid map-get($colors, 'white');
-            border-radius: 20px;
+            border-radius: 5%;
             overflow: hidden;
             height: 100%;
-            display: flex;
-
 
             .features-video-play-img {
                 width: 100%;
@@ -55,7 +55,7 @@
 
             .video-play-btn {
                 @extend .font-80, .cl-secundary;
-                transition: 200ms;  
+                transition: 400ms;  
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -74,23 +74,28 @@
         }
     }
 
-    .features-barra-video {
-        @extend .pad-all-40, .bg-primary;
-        padding: 180px 0 80px;
+    //VIDEO PLAY DETAIL
+    .features-trace-video {
+        padding: 190px 0 80px;
+        background: linear-gradient(to left, #7873ed, #a865e1);
 
-        .features-barra-text {
+        .features-trace-text {
             @extend .font-18, .cl-white;
 
-            .features-quadrado-barra {
-                .quadrado-barra-number {
-                    @extend .font-60, .mg-sides-10;
+            .features-box-trace {
+                display: flex;
+                justify-content: center;
+
+                .box-trace-number {
+                    @extend .mg-sides-10;
+                    font-size: 3em;
                 }
 
-                .quadrado-barra-icon {
+                .box-trace-icon {
                     @extend .pad-all-5;
 
-                    .barra-icon {
-                        @extend .font-36;
+                    .trace-icon {
+                        @extend .font-30, .pad-bottom-10;
                     }
                 }
             }

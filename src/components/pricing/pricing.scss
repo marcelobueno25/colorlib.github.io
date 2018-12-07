@@ -1,5 +1,6 @@
 @import '../../scss/_deps';
 
+//TITLE PRICING PLAN
 .pricing {
     @extend .font-16, .cl-gray, .bg-white;
     line-height: 1.8;
@@ -18,17 +19,18 @@
         }
     }
 
+    //PRICING PLAN
     .pricing-plan {
         @extend .text-center;
+        margin-top: 40px;
 
         .pricing-box-plan {
-            margin: 0;
+            @extend .bg-white;
             padding: 0 1px;
-            background: #fff;
             border: 1px solid #ebebeb;
             border-radius: 30px 30px 30px 0;
 
-            &:hover .box-plan-button{
+            &:hover .box-plan-button {
                 @extend .bg-amethyst;
                 transition: 500ms;
             }
@@ -36,12 +38,13 @@
             .box-plan-money {
                 @extend .pad-both-30;
                 border-radius: 30px 30px 0 0;
+                margin-top: 40px;
 
                 .plan-money {
                     @extend .font-44, .cl-secundary;
 
                     .money {
-                        font-size: 16px;
+                        @extend .font-16;
                     }
                 }
 
@@ -54,12 +57,14 @@
             .special-plan {
                 @extend .bg-amethyst, .pad-both-30;
                 border-radius: 30px 30px 0 0;
+                margin-top: 40px;
 
                 .special-plan-money {
                     @extend .font-44, .cl-white;
-                        .money {
-                            font-size: 16px;
-                        }
+
+                    .money {
+                        @extend .font-16;
+                    }
                 }
 
                 .special-plan-text {
@@ -76,10 +81,6 @@
                     @extend .pad-both-10, .cl-white, .font-16;
                     background: transparent;
                 }
-
-                &:hover {  
-                    @extend .bg-kimberly; 
-                }
             }
 
             .box-plan-description { 
@@ -87,7 +88,7 @@
                     line-height: 2.7;
 
                     li {
-                        background: #fff;
+                        @extend .bg-white;
                         border-top: 1px solid #ebebeb;
                         border-bottom: 1px solid #ebebeb;
                     }
