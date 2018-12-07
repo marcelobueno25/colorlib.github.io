@@ -56,10 +56,9 @@
         }
 
         .contact-inputs-button {
-            @extend .cl-white, .bg-secundary, .pad-all-15, .text-center;
+            @extend .cl-white, .bg-secundary, .pad-all-10, .text-center;
             display: inline-block;
             border-radius: 23px 23px 23px 0;
-            font-weight: bold;
             transition: 500ms;  
             width: 100%;    
             max-width: 185px;
@@ -87,6 +86,10 @@ footer {
         justify-content: center;
         flex-direction: column;
 
+        .link-colorlib {
+            color: blue;
+        }
+
         .footer-text {
             @extend .font-70;
             font-weight: bold;
@@ -107,13 +110,21 @@ footer {
                     @extend .bg-secundary;
                 }
             }
+
+            .special-networks {
+                @extend .mg-sides-5, .text-center, .cl-white, .bg-secundary;
+                border-radius: 10px 10px 10px 0;
+                line-height: 40px;
+                height: 40px;
+                width: 40px;
+            }
         }
 
         .footer-menu {
             @extend .pad-both-10;
 
             .footer-menu-link {
-                @extend .cl-primary;
+                color: darken(map-get($colors, 'primary'), 30%);
             }
         }
     }

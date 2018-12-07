@@ -42,13 +42,15 @@
         height: 900px;
         width: 100%;
         z-index: 1;
+        transform-origin: top;
 
         .home-smartphone {
             .smartphone {
                 position: absolute;
-                top: 492px;
+                top: 400px;
                 right: 85px;
-                width: 45%; 
+                width: 750px; 
+                transform-origin: top;
             }
         }
 
@@ -56,9 +58,10 @@
             .home-smartphone {
                 .smartphone {
                     position: absolute;
-                    top: 632px;
-                    right: 85px;
-                    width: 45%; 
+                    top: 460px;
+                    right: 25px;
+                    width: 650px; 
+                    transform-origin: top;
                 }
             }
         }
@@ -67,9 +70,10 @@
             .home-smartphone {
                 .smartphone {
                     position: absolute;
-                    top: 632px;
-                    right: 85px;
-                    width: 45%; 
+                    top: 542px;
+                    right: 15px;
+                    width: 550px;
+                    transform-origin: top; 
                 }
             }
         }
@@ -78,9 +82,10 @@
             .home-smartphone {
                 .smartphone {
                     position: absolute;
-                    top: 682px;
-                    right: 85px;
-                    width: 45%; 
+                    top: 592px;
+                    right: 5px;
+                    width: 450px;
+                    transform-origin: top;
                 }
             }
         }

@@ -19,6 +19,15 @@
     }
 
     .team-box {
+
+        .team-boxs {
+            &:hover .box-square {
+                @extend .cl-white;
+                transition: 600ms;
+                opacity: 1;
+            } 
+        }
+
         .team-box-square {
             position: relative;
 
@@ -41,12 +50,6 @@
                 right: 0;
                 bottom: 0;
                 opacity: 0;
-
-                &:hover {
-                    @extend .cl-white;
-                    transition: 700ms;
-                    opacity: 1;
-                }
 
                 .box-square-networks {
                     display: flex;

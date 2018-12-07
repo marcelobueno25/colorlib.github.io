@@ -84,32 +84,31 @@
     }
 
     .testimonials-trace {
-        @extend .pad-both-50, .bg-primary;
+        @extend .pad-both-40, .bg-primary;
         background: linear-gradient(to left, #7873ed, #a865e1);
 
         .testimonials-trace-text {
-            color: map-get($colors, 'white');
-            text-align: left;
+            @extend .pad-both-20, .cl-white, .text-left;
 
             .trace-text {
                 @extend .font-16;
-                margin-bottom: 30px;
             }
         }
 
         .testimonials-trace-button {
+            @extend .halign-middle, .valign-middle;
             display: flex;
-            justify-content: center;
-            align-items: center;
 
             .trace-button {
                 @extend .pad-all-10;
-                border-radius: 24px 24px 24px 0;
+                display: inline-block;
+                border-radius: 23px 23px 23px 0;
                 background: map-get($colors, 'white');
                 color: map-get($colors, 'secundary');
                 font-weight: bold;
-                height: 50px;
-                width: 170px;
+                width: 100%;
+                max-width: 185px;
+                font-size: 16px;
 
                 &:hover {
                     @extend .cl-white;
