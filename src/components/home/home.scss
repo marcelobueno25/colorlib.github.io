@@ -1,37 +1,37 @@
 @import '../../scss/_deps';
 
-.navbar {
-    @extend .bg-white;
-    position: fixed;
-    background: rgba(map-get($colors, 'primary'), .8);
-    width: 100%;
-    z-index: 99;
+// .navbar {
+//     @extend .bg-white;
+//     position: fixed;
+//     background: rgba(map-get($colors, 'primary'), .8);
+//     width: 100%;
+//     z-index: 99;
 
-    .navbar-logo h1 {
-        @extend .font-50;
-        font-weight: bold;
-        color: map-get($colors, 'white');
-    }
+//     .navbar-logo h1 {
+//         @extend .font-50;
+//         font-weight: bold;
+//         color: map-get($colors, 'white');
+//     }
 
-    .navbar-links {
-        @extend .row, .valign-middle, .halign-right;
+//     .navbar-links {
+//         @extend .row, .valign-middle, .halign-right;
 
-        a {
-            @extend .mg-sides-5, .font-13;
+//         a {
+//             @extend .mg-sides-5, .font-13;
             
-            color: map-get($colors, 'white');
-        }
-    }
+//             color: map-get($colors, 'white');
+//         }
+//     }
 
-    .navbar-button {
-        @extend .pad-all-10;
-        border: 2px solid lighten(map-get($colors, 'primary'), 15%);
-        border-radius: 24px 24px 24px 0;
-        background: rgba(map-get($colors, 'primary'), .1);
-        color: map-get($colors, 'white');
-        font-weight: bold;
-    }
-}
+//     .navbar-button {
+//         @extend .pad-all-10;
+//         border: 2px solid lighten(map-get($colors, 'primary'), 15%);
+//         border-radius: 24px 24px 24px 0;
+//         background: rgba(map-get($colors, 'primary'), .1);
+//         color: map-get($colors, 'white');
+//         font-weight: bold;
+//     }
+// }
 
 .home {
     .home-fundo {
@@ -43,54 +43,131 @@
         width: 100%;
         z-index: 1;
         transform-origin: top;
-
-        .home-smartphone {
-            .smartphone {
-                position: absolute;
-                top: 400px;
-                right: 85px;
-                width: 750px; 
-                transform-origin: top;
-            }
-        }
-
-        @media (max-width: 1199px) and (min-width: 992px) {
-            .home-smartphone {
-                .smartphone {
-                    position: absolute;
-                    top: 460px;
-                    right: 25px;
-                    width: 650px; 
-                    transform-origin: top;
-                }
-            }
-        }
-
-        @media (max-width: 991px) and (min-width: 768px) {
-            .home-smartphone {
-                .smartphone {
-                    position: absolute;
-                    top: 542px;
-                    right: 15px;
-                    width: 550px;
-                    transform-origin: top; 
-                }
-            }
-        }
-
-        @media (max-width: 767px) and (min-width: 480px) {
-            .home-smartphone {
-                .smartphone {
-                    position: absolute;
-                    top: 592px;
-                    right: 5px;
-                    width: 450px;
-                    transform-origin: top;
-                }
-            }
-        }
     }   
 }
+
+.home-welcome-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .home-welcome {
+        @extend .cl-white, .font-16;
+
+        .home-welcome-title {
+            @extend .font-100, .pad-top-100;
+        }
+
+        .home-welcome-c {
+            position: absolute;
+            font-weight: bold;
+            opacity: .2;
+            top: 180px;
+            font-size: 350px;
+            z-index: -1;
+        }
+
+        .home-welcome-text {
+            @extend .pad-both-20;
+        }
+
+        .home-welcome-input {
+            @extend .pad-all-15, .mg-top-80;
+            display: inline-block;
+            border-radius: 24px;
+            transition: .5s;
+            width: 100%;
+            max-width: 185px;
+            background: rgba(map-get($colors, 'white'), .4);
+        }
+
+        .home-welcome-button {
+            @extend .pad-all-10, .bg-white, .mg-left-15;
+            display: inline-block;
+            border-radius: 23px 23px 23px 0;
+            color: #fc397d;
+            font-weight: 700;
+            width: 100%;
+            max-width: 185px;
+        }
+    }
+}
+
+.home-welcome-smartphone {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    bottom: -120px;
+
+    .welcome-smartphone {
+        .smartphone-img {
+            height: 100%;
+            width: 100%;
+            max-width: 1000px;
+        }
+    }
+}
+
+
+// .home {
+//     .home-fundo {
+//         position: relative;
+//         background: url('../img/welcome-bg.png') no-repeat;
+//         background-position: bottom center;
+//         background-size: cover;
+//         height: 900px;
+//         width: 100%;
+//         z-index: 1;
+//         transform-origin: top;
+
+//         .home-smartphone {
+//             .smartphone {
+//                 position: absolute;
+//                 top: 400px;
+//                 right: 85px;
+//                 width: 750px; 
+//                 transform-origin: top;
+//             }
+//         }
+
+//         @media (max-width: 1199px) and (min-width: 992px) {
+//             .home-smartphone {
+//                 .smartphone {
+//                     position: absolute;
+//                     top: 460px;
+//                     right: 25px;
+//                     width: 650px; 
+//                     transform-origin: top;
+//                 }
+//             }
+//         }
+
+//         @media (max-width: 991px) and (min-width: 768px) {
+//             .home-smartphone {
+//                 .smartphone {
+//                     position: absolute;
+//                     top: 542px;
+//                     right: 15px;
+//                     width: 550px;
+//                     transform-origin: top; 
+//                 }
+//             }
+//         }
+
+//         @media (max-width: 767px) and (min-width: 480px) {
+//             .home-smartphone {
+//                 .smartphone {
+//                     position: absolute;
+//                     top: 592px;
+//                     right: 5px;
+//                     width: 450px;
+//                     transform-origin: top;
+//                 }
+//             }
+//         }
+//     }   
+// }
 
 // .home {
 
@@ -163,3 +240,74 @@
 //     }
 
 // }
+
+.nav {
+    .nav-menu {
+        @extend .bg-primary;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+        list-style: none;
+        float: right;
+    }
+
+    .nav-logo {
+        float: left;
+        padding: 5px 100px;
+        color: white;
+        font-weight: bold;
+        font-size: 38px;
+    }
+
+    .nav-icon {
+        float: right;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    @media (max-width: 1200px) {
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+}
+
+.nav-menu-ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    
+    .nav-menu-li {
+        display: inline-block;
+        padding: 15px;
+
+
+        .nav-menu-a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 0 5px;
+            font-weight: bold;
+        }
+    }
+}
+
+    @media (max-width: 1200px) {
+        .nav-menu-ul  {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 50px;
+            background: rgba(map-get($colors, 'black'), .6);
+            display: none;
+        }
+    }
+
