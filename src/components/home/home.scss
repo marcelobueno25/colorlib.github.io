@@ -1,5 +1,6 @@
 @import '../../scss/_deps';
 
+// BACKGROUND COLORLIB APP
 .home {
     .home-fundo {
         position: relative;
@@ -45,6 +46,16 @@
             width: 100%;
             max-width: 185px;
             background: rgba(map-get($colors, 'white'), .4);
+
+            &:focus {
+                border: 1px solid #80bdff;
+                box-shadow: 0 0 2px 1px #b8dafd;
+            }
+
+            &::placeholder {
+                @extend .cl-white;
+                opacity: .4;
+            }
         }
 
         .home-welcome-button {
@@ -64,6 +75,7 @@
     }
 }
 
+// IMG SMARTPHONE
 .home-welcome-smartphone {
     @extend .valign-bottom;
     display: flex;
@@ -79,6 +91,7 @@
     }
 }
 
+// NAVBAR
 .nav-opaque {
     background: transparent;
 }
