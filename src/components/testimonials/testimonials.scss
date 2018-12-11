@@ -2,12 +2,12 @@
 
 
 .testimonials {
-    @extend .pad-top-100, .font-18, .text-center, .bg-white, .pad-bottom-30;
+    @extend .pad-top-40, .font-18, .text-center, .bg-white, .pad-bottom-30;
 
     .swiper-container {
         padding-bottom: 10vh;
         max-width: 1300px;
-        height: 500px;
+        height: 600px;
         width: 100%;
 
         .swiper-slide {
@@ -16,8 +16,14 @@
             max-width: 100%;
 
             .quoto {
-                @extend .font-40, .cl-primary;
+                @extend .font-50;
+                color: lighten(map-get($colors, 'primary'), 10%);
                 padding: 3vh;
+            }
+
+            .phrases {
+                padding: 20px;
+
             }
 
             .testimonials-phrases {
@@ -29,12 +35,16 @@
             }
 
             .pharases-star {
-                color: yellow;
+                @extend .cl-orange, .font-14, .mg-both-20;
                 top: 25px;
             }
 
-            .pharases-names {
-                margin: 3vh;
+            .testimonials-pharases-names {
+                @extend .font-16, .cl-gray;
+                .pharases-names {
+                    @extend .font-22, .pad-both-10;
+                    color: darken(map-get($colors, 'primary'), 20%);
+                }
             }
 
             .testimonials-image {
@@ -45,6 +55,8 @@
                 opacity: .3;
                 width: 70px;
                 height: 70px;
+                border: 6px solid white;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
                 .people {
                     width: 100%;
@@ -69,9 +81,17 @@
             position: relative;
             margin: 30px 0;
 
+            .swiper-pagination-bullet {
+                @extend .bg-white;
+                opacity: .8;
+                border: 3px solid map-get($colors, 'gray');
+                width: 12px;
+                height: 12px;
+            }
+
             .swiper-pagination-bullet-active {
-                background: #fc397d;
-                border: 2px solid #fc397d;
+                background: map-get($colors, 'secundary');
+                border: 2px solid map-get($colors, 'secundary');
             }  
         }
     }
@@ -100,15 +120,12 @@
             display: flex;
 
             .trace-button {
-                @extend .pad-all-10;
+                @extend .cl-secundary, .bg-white, .pad-all-10, .font-16;
                 display: inline-block;
                 border-radius: 23px 23px 23px 0;
-                background: map-get($colors, 'white');
-                color: map-get($colors, 'secundary');
                 font-weight: bold;
                 width: 100%;
                 max-width: 185px;
-                font-size: 16px;
 
                 &:hover {
                     @extend .cl-white;

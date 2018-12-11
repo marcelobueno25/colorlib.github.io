@@ -4,17 +4,18 @@
 .screenshot {
     @extend .bg-white;
 
-    //TITLE APP SCREENSHOT
+    // APP SCREENSHOTS
     .screenshot-title {
-        @extend .pad-top-80, .text-center, .font-22;
-        color: darken(map-get($colors, 'primary'), 10%);
+        @extend .pad-both-80, .text-center, .font-40;
+        font-weight: 700;
+        color: darken(map-get($colors, 'primary'), 15%);
 
         .screenshot-title-trace {
             @extend .bg-secundary;
             display: block;
+            margin: 10px auto;
             width: 80px;
             height: 2px;
-            margin: 15px auto;
         }
     }
 
@@ -22,14 +23,15 @@
     .swiper-container {
         @extend .pad-top-50;
         height: 100%;
+        max-width: 1800px;
         width: 90%;
 
         .swiper-slide {
             @extend .text-center;
             opacity: .7;
+            transform: scale(.8);
             height: 100%;
             width: 100%;
-            transform: scale(.8);
 
             .slide-img {
                 height: 100%;
@@ -45,12 +47,20 @@
         } 
 
         .swiper-pagination {
+            @extend .mg-both-30;
             position: relative;
-            margin: 30px 0;
+
+            .swiper-pagination-bullet {
+                @extend .bg-white;
+                width: 12px;
+                height: 12px;
+                opacity: .8;
+                border: 2px solid map-get($colors, 'gray');
+            }
 
             .swiper-pagination-bullet-active {
-                background: #fc397d;
-                border: 2px solid #fc397d;
+                background: map-get($colors, 'secundary');
+                border: 2px solid map-get($colors, 'secundary');
             }
         }
     }

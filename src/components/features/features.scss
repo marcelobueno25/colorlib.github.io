@@ -4,15 +4,16 @@
     @extend .font-16, .cl-gray, .bg-white;
     line-height: 1.5;
 
-    //TITLE AWESOME FEATURES
+    // AWESOME FEATURES
     .features-title {
-        @extend .font-22, .text-center, .pad-both-80;
-        color: darken(map-get($colors, 'primary'), 10%);
+        @extend .pad-both-80, .text-center, .font-40;
+        font-weight: 700;
+        color: darken(map-get($colors, 'primary'), 15%);
 
         .features-title-trace {
-            @extend .bg-secundary, .mg-both-15;
+            @extend .bg-secundary;
             display: block;
-            margin: 0 auto;
+            margin: 10px auto;
             width: 80px;
             height: 2px;
         }
@@ -45,7 +46,7 @@
             display: flex;
             border: 20px solid map-get($colors, 'white');
             border-radius: 5%;
-            overflow: hidden;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, .08);
             height: 100%;
 
             .features-video-play-img {
@@ -54,18 +55,15 @@
             }
 
             .video-play-btn {
-                @extend .font-80, .cl-secundary;
-                transition: 400ms;  
+                @extend .font-80, .cl-secundary, .bg-white, .halign-middle, .valign-middle;
                 position: absolute;
                 left: 50%;
                 top: 50%;
-                background: white;
+                display: flex;
+                transition: 500ms;  
+                border-radius: 100%;
                 height: 50px;
                 width: 50px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 100%;
 
                 &:hover {
                     @extend .cl-primary;
@@ -83,8 +81,8 @@
             @extend .font-18, .cl-white;
 
             .features-box-trace {
+                @extend .halign-middle, .valign-bottom;
                 display: flex;
-                justify-content: center;
 
                 .box-trace-number {
                     @extend .mg-sides-10;

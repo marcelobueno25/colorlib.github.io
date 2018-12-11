@@ -1,35 +1,33 @@
 @import '../../scss/_deps';
 
-//TITLE PRICING PLAN
+// PRICING PLAN
 .pricing {
-    @extend .font-16, .cl-gray, .bg-white;
-    line-height: 1.8;
+    @extend .font-16, .cl-gray, .bg-gray-extra-light;
+    line-height: 1.5;
 
     .pricing-title {
-        @extend .pad-both-80, .text-center, .font-22;
-        color: darken(map-get($colors, 'primary'), 10%);
+        @extend .pad-both-80, .text-center, .font-40;
+        font-weight: 700;
+        color: darken(map-get($colors, 'primary'), 15%);
 
         .pricing-title-trace {
             @extend .bg-secundary;
             display: block;
+            margin: 10px auto;
             width: 80px;
             height: 2px;
-            margin: 0 auto;
-            margin-top: 15px;
         }
     }
 
-    //PRICING PLAN
+    // PRICING PLAN BOX
     .pricing-plan {
-        @extend .text-center;
-        margin-top: 40px;
+        @extend .text-center, .mg-top-40, .pad-bottom-80, .mg-sides-30;
 
         .pricing-box-plan {
-            @extend .bg-white;
+            @extend .bg-white, .mg-top-30;
             padding: 0 1px;
-            border: 1px solid #ebebeb;
+            border: 1px solid darken(map-get($colors, 'white'), 5%);
             border-radius: 30px 30px 30px 0;
-            margin-top: 30px;
 
             &:hover .box-plan-button {
                 @extend .bg-amethyst;
@@ -88,8 +86,8 @@
 
                     li {
                         @extend .bg-white;
-                        border-top: 1px solid #ebebeb;
-                        border-bottom: 1px solid #ebebeb;
+                        border-top: 1px solid darken(map-get($colors, 'white'), 5%);
+                        border-bottom: 1px solid darken(map-get($colors, 'white'), 5%);
                     }
                 }
             }

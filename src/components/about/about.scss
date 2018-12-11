@@ -1,48 +1,55 @@
 @import '../../scss/_deps';
 
+// WHY IS IT SPECIAL
 .about {
     @extend .font-16, .cl-gray, .bg-white;
-    line-height: 1.8;
+    line-height: 1.5;
 
     .about-title {
-        @extend .pad-both-80, .text-center, .font-22;
-        color: darken(map-get($colors, 'primary'), 10%);
+        @extend .pad-both-80, .text-center, .font-40;
+        font-weight: 700;
+        color: darken(map-get($colors, 'primary'), 15%);
 
         .about-title-trace {
             @extend .bg-secundary;
             display: block;
+            margin: 10px auto;
             width: 80px;
             height: 2px;
-            margin: 0 auto;
-            margin-top: 15px;
         }
     }
 
+    // WHY IS IT SPECIAL BOX
     .about-list {
-        .about-box {
-            @extend .pad-all-30, .text-center;
-            border: 1px solid #eff2f6;
-            border-radius: 25px 25px 25px 0;
-            width: 100%;
-            height: 100%;
+        .about-list-box {
+            @extend .mg-bottom-20;
 
-            &:hover {
-                @extend .bg-white;
-                transition: 300ms;
-                box-shadow: 0 10px 90px rgba(map-get($colors, 'black'), .1);
-            }
+            .about-box {
+                @extend .pad-all-30, .text-center;
+                border: 1px solid #eff2f6;
+                border-radius: 25px 25px 25px 0;
+                width: 100%;
+                height: 100%;
 
-            .box-icon {
-                @extend .font-40, .pad-bottom-20, .cl-secundary;
-            }
+                &:hover {
+                    @extend .bg-white;
+                    transition: 1s;
+                    box-shadow: 0 10px 90px rgba(map-get($colors, 'black'), .1);
+                }
 
-            .box-title {
-                @extend .font-20, .pad-bottom-20;
-                color: darken(map-get($colors, 'primary'), 10%);
+                .box-icon {
+                    @extend .font-40, .pad-bottom-20, .cl-secundary;
+                }
+
+                .box-title {
+                    @extend .font-20, .pad-bottom-20;
+                    color: darken(map-get($colors, 'primary'), 15%);
+                }
             }
         }
     }
 
+    // OUR BEST PROPOSITIONS FOR YOU!
     .about-special {
         @extend .mg-top-100;
 
@@ -55,17 +62,21 @@
 
         .about-special-text {
             .special-title {
-                @extend .font-40, .pad-bottom-40;
-                color: darken(map-get($colors, 'primary'), 15%);
+                @extend .font-34, .mg-bottom-25;
+                color: darken(map-get($colors, 'primary'), 10%);
                 line-height: 1.3;
             }
 
+            // BUTTOM GOGGLE STORE E APPLE STORE
             .special-store {
-                @extend .font-16, .pad-top-40, .text-center;
+                @extend .font-14, .pad-top-40, .text-center;
+                line-height: 1;
 
                 .special-store-buttom {
-                    @extend .pad-both-10, .pad-sides-20, .mg-both-5;
-                    width: 100%;
+                    @extend .pad-both-15, .mg-both-5, .halign-middle, .cl-gray;
+                    display: flex;
+                    flex-direction: row;
+                    min-width: 174px;
                     border: 1px solid #ddd;
                     border-radius: 30px 30px 30px 0;
                     box-shadow: 0 10px 30px rgba(map-get($colors, 'black'), .1);
@@ -75,16 +86,17 @@
                         transition: 700ms;
                     }
 
-                    .special-store-buttom-text-available {
-                        display: block;
+                    .special-store-buttom-text {
+                        font-weight: 700;
+
+                        .buttom-text-available { 
+                            @extend .font-10;
+                            display: block;
+                        }
                     }
 
                     .special-store-buttom-icon {
-                        @extend .font-24;
-                    }
-
-                    .special-store-buttom-text {
-                        display: inline;
+                        @extend .font-26, .mg-right-10;
                     }
                 }
             }
