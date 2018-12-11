@@ -1,8 +1,8 @@
 @import '../../scss/_deps';
 
-// CSS DO 
+// COMEÇO DO CONTEÚDO DO FOOTER 
 .footer-contact {
-    @extend .font-16, .pad-top-100, .cl-gray, .bg-white;
+    @extend .font-16, .pad-top-100, .cl-gray, .bg-gray-extra-light;
     line-height: 1.5;
     z-index: 99;
     margin-bottom: 400px;
@@ -11,6 +11,7 @@
         @extend .pad-bottom-50;
         box-shadow: 0 6px 10px rgba(0, 0, 0, .2);
 
+        //GET IN TOUCH WITH US!
         .contact-title {
             @extend .font-22;
             color: darken(map-get($colors, 'primary'), 10%);
@@ -23,6 +24,7 @@
             }
         }
 
+        //CONTACT
         .contact-text {
             @extend .pad-both-50;
         }
@@ -32,6 +34,7 @@
             line-height: 2.2;
         }
 
+        //INPUTS
         .contact-inputs {
             .form-control {
                 @extend .pad-all-20, .mg-both-10, .font-16;
@@ -55,6 +58,7 @@
             }
         }
 
+        //BUTTON
         .contact-inputs-button {
             @extend .cl-white, .bg-secundary, .pad-all-10, .text-center;
             display: inline-block;
@@ -70,6 +74,7 @@
     }
 }
 
+// INICIO - FOOTER CA.
 footer {
     width: 100%;
     height: 380px;
