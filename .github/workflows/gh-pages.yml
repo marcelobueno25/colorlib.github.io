@@ -1,28 +1,39 @@
 name: Deploy to GitHub Pages
 
+# Dispara sempre que houver push na branch main
 on:
-  push:
-    branches: [main]        # publica sempre que fizer push na main
+    push:
+        branches: [master]
+
+permissions:
+    contents: write # necessário para fazer push na branch gh-pages
+    pages: write
+    id-token: write
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    build-and-deploy:
+        runs-on: ubuntu-latest
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+        steps:
+            # 1. Checkout do código
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Install deps & build
-        run: |
-          npm ci
-          npm run build      # gera dist/
+            # 2. Setup Node (versão 20)
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+            # 3. Instalar dependências e buildar
+            - name: Install dependencies & build
+              run: |
+                  npm ci          # instala pacotes
+                  npm run build   # gera dist/
+
+            # 4. Publicar dist/ na branch gh-pages
+            - name: Deploy to gh-pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
