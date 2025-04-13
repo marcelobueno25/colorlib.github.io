@@ -1,151 +1,158 @@
-var gulp            = require('gulp');
+/* eslint-env node, es2020 */
+/* eslint-disable import/no-extraneous-dependencies */
+/**
+ * Gulp 4 build pipeline – compatível com Node 20
+ * Usa Dart Sass e carrega gulp‑imagemin dinamicamente (ESM).
+ */
+
+const { src, dest, watch, series, parallel } = require("gulp");
+
 /*************** Global ***************/
-var concat          = require('gulp-concat');
-var browserSync     = require('browser-sync').create();
-var watch           = require('gulp-watch');
-var cache           = require('gulp-cached');
-var flatten         = require('gulp-flatten');
-var plumber         = require('gulp-plumber');
-var gulpUtil        = require('gulp-util');
-var runSequence     = require('run-sequence');
+const concat = require("gulp-concat");
+const browserSync = require("browser-sync").create();
+const cache = require("gulp-cached");
+const flatten = require("gulp-flatten");
+const plumber = require("gulp-plumber");
+const log = require("fancy-log");
+const colors = require("ansi-colors");
 /*************** CSS ***************/
-var postcss         = require('gulp-postcss');
-var cssnext         = require('postcss-cssnext');
-var sass            = require('gulp-sass');
-var groupQueries    = require('gulp-group-css-media-queries');
-var sassLint        = require('gulp-sass-lint');
-var cleanCSS        = require('gulp-clean-css');
+const postcss = require("gulp-postcss");
+const cssnext = require("postcss-cssnext");
+const dartSass = require("sass");
+const gulpSass = require("gulp-sass")(dartSass);
+const groupQueries = require("gulp-group-css-media-queries");
+const sassLint = require("gulp-sass-lint");
+const cleanCSS = require("gulp-clean-css");
 /*************** JS ***************/
-var merge2          = require('merge2');
-var babel           = require('gulp-babel');
-var uglify          = require('gulp-uglify');
+const merge2 = require("merge2");
+const babel = require("gulp-babel");
+const uglify = require("gulp-uglify");
 /*************** HTML ***************/
-var fileinclude     = require('gulp-file-include');
-var htmlBeautify    = require('gulp-html-beautify');
-var htmlmin         = require('gulp-htmlmin');
-/*************** Images ***************/
-var imagemin        = require('gulp-imagemin');
+const fileinclude = require("gulp-file-include");
+const htmlBeautify = require("gulp-html-beautify");
 /*************** Paths ***************/
-var paths           = require('./gulp.paths.json');
+const paths = require("./gulp.paths.json");
 
-
-//===============================================
-//                            Tratamento de erros
-//===============================================
-var bool_cached = true;
-const onError = function(error) {
-    let message = error.message.split('Error:')
-        message = message.length > 1 ? message[1] : message[0]
-        message = message.replace('unknown path', error.fileName)
-
-    gulpUtil.beep();
-    gulpUtil.log(gulpUtil.colors.red(`Error: ${message}`));
+// -----------------------------------------------------------------------------
+// Tratamento de erros (plumber)
+// -----------------------------------------------------------------------------
+function onError(err) {
+    const message = (err.message || "").replace(
+        "unknown path",
+        err.fileName || ""
+    );
+    process.stdout.write("\x07"); // beep!
+    log.error(colors.red(message));
+    this.emit("end");
 }
 
-
-//===============================================
-//                                   Browser Sync
-//===============================================
-gulp.task('sync', function() {
+// -----------------------------------------------------------------------------
+// BrowserSync
+// -----------------------------------------------------------------------------
+function sync(done) {
     browserSync.init({
-        server: { baseDir: "./dist" }
-    })
-})
+        server: { baseDir: "./dist" },
+        notify: false,
+    });
+    done();
+}
 
-gulp.task('browsersync:reload', function() {
+function reload(done) {
     browserSync.reload();
-})
+    done();
+}
 
+// -----------------------------------------------------------------------------
+// HTML
+// -----------------------------------------------------------------------------
+function html() {
+    return src(paths.src.views.pages)
+        .pipe(fileinclude({ prefix: "@@", basepath: "@file" }))
+        .pipe(htmlBeautify({ indent_size: 2 }))
+        .pipe(dest(paths.dest.views));
+}
 
-//===============================================
-//                                           HTML
-//===============================================
-gulp.task('html', () =>
-    {
-        var options = [
-            { indentSize: 4 }
-        ];
-        gulp.src( paths.src.views.pages )
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(gulp.dest( paths.dest.views ))
-    }
-)
-
-
-//===============================================
-//                               Stylesheet | CSS
-//===============================================
-gulp.task('sass-lint', function() {
-    return gulp.src( paths.src.css.all )
-        .pipe(sassLint({ configFile: '.sass-lint.yml' }))
+// -----------------------------------------------------------------------------
+// Styles – Sass / PostCSS
+// -----------------------------------------------------------------------------
+function sassLintTask() {
+    return src(paths.src.css.all)
+        .pipe(sassLint({ configFile: ".sass-lint.yml" }))
         .pipe(sassLint.format())
-        .pipe(sassLint.failOnError())
-})
+        .pipe(sassLint.failOnError());
+}
 
-gulp.task('css', function() {
-    return gulp.src( paths.src.css.files )
+function css() {
+    return src(paths.src.css.files)
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(sass({ includePaths: paths.src.css.imports }))
+        .pipe(
+            gulpSass({ includePaths: paths.src.css.imports }).on(
+                "error",
+                gulpSass.logError
+            )
+        )
         .pipe(groupQueries())
-        .pipe(postcss([ cssnext({ browsers: ['last 10 versions'] }) ]))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(concat('bundle.min.css'))
-        .pipe(gulp.dest( paths.dest.css ))
-})
+        .pipe(postcss([cssnext({ browsers: ["last 10 versions"] })]))
+        .pipe(cleanCSS({ compatibility: "ie8" }))
+        .pipe(concat("bundle.min.css"))
+        .pipe(dest(paths.dest.css))
+        .pipe(browserSync.stream());
+}
 
-
-//===============================================
-//                                JavaScript | JS
-//===============================================
-gulp.task('js', function() {
-    return merge2(gulp.src(paths.src.js.dependencies),
-        gulp.src(paths.src.js.files)
+// -----------------------------------------------------------------------------
+// JavaScript
+// -----------------------------------------------------------------------------
+function js() {
+    const vendor = src(paths.src.js.dependencies);
+    const app = src(paths.src.js.files)
         .pipe(plumber({ errorHandler: onError }))
-        .pipe(babel({ presets: ['env'] })))
-        .pipe(uglify())
-        .pipe(concat('bundle.min.js'))
-        .pipe(gulp.dest( paths.dest.js ))
-})
+        .pipe(babel({ presets: ["@babel/preset-env"] }));
 
-//===============================================
-//                                         Images
-//===============================================
-gulp.task('image', function() {
-    return gulp.src( paths.src.img )
-        .pipe(cache('images'))
+    return merge2(vendor, app)
+        .pipe(uglify())
+        .pipe(concat("bundle.min.js"))
+        .pipe(dest(paths.dest.js));
+}
+
+// -----------------------------------------------------------------------------
+// Images (ESM – import dinâmico)
+// -----------------------------------------------------------------------------
+async function images() {
+    const imagemin = (await import("gulp-imagemin")).default;
+    return src(paths.src.img)
+        .pipe(cache("images"))
         .pipe(flatten())
         .pipe(imagemin())
-        .pipe(gulp.dest( paths.dest.img ))
-})
+        .pipe(dest(paths.dest.img));
+}
 
+// -----------------------------------------------------------------------------
+// Fonts
+// -----------------------------------------------------------------------------
+function fonts() {
+    return src(paths.src.fonts).pipe(dest(paths.dest.fonts));
+}
 
-//===============================================
-//                                          Fonts
-//===============================================
-gulp.task('fonts', function() {
-    return gulp.src( paths.src.fonts )
-        .pipe(gulp.dest( paths.dest.fonts ))
-});
+// -----------------------------------------------------------------------------
+// Watchers
+// -----------------------------------------------------------------------------
+function watcher() {
+    watch(paths.src.img, series(images, reload));
+    watch(paths.src.js.files, series(js, reload));
+    watch(paths.src.fonts, series(fonts, reload));
+    watch(paths.src.css.all, series(sassLintTask, css)); // stream já recarrega
+    watch(paths.src.views.files, series(html, reload));
+}
 
+// -----------------------------------------------------------------------------
+// Build & Default
+// -----------------------------------------------------------------------------
+const build = series(html, sassLintTask, css, js, images, fonts);
 
-//===============================================
-//                                          Watch
-//===============================================
-gulp.task('watch', function() {
-    gulp.watch(paths.src.img, function() { runSequence('image', 'browsersync:reload'); })
-    gulp.watch(paths.src.js.files, function() { runSequence('js', 'browsersync:reload'); })
-    gulp.watch(paths.src.fonts, function() { runSequence('fonts', 'browsersync:reload'); })
-    gulp.watch(paths.src.css.all, function() { runSequence('sass-lint', 'css', 'browsersync:reload'); })
-    gulp.watch(paths.src.views.files, function() { runSequence('html', 'browsersync:reload'); })
-});
-
-
-//===============================================
-//                                  Tasks Default
-//===============================================
-gulp.task('default', function(callback) {
-    runSequence('html', 'sass-lint', 'css', 'js', 'image', 'fonts', 'watch', 'sync');
-});
+exports.html = html;
+exports.css = css;
+exports.js = js;
+exports.images = images;
+exports.fonts = fonts;
+exports.build = build;
+exports.default = series(build, parallel(watcher, sync));
