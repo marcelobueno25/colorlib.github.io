@@ -1,4 +1,7 @@
-@import '../../scss/_deps';
+@use "sass:color";
+@use "sass:map";
+@use "../../scss/_deps" as *;
+@use "../../scss/_components/_config" as *;
 
 // WHY IS IT SPECIAL
 .about {
@@ -8,7 +11,7 @@
     .about-title {
         @extend .pad-both-80, .text-center, .font-40;
         font-weight: 700;
-        color: darken(map-get($colors, 'primary'), 15%);
+        color: color.adjust(map.get($colors, "primary"), $lightness: -15%);
 
         .about-title-trace {
             @extend .bg-secundary;
@@ -34,7 +37,7 @@
                 &:hover {
                     @extend .bg-white;
                     transition: 1s;
-                    box-shadow: 0 10px 90px rgba(map-get($colors, 'black'), .1);
+                    box-shadow: 0 10px 90px rgba(map.get($colors, "black"), 0.1);
                 }
 
                 .box-icon {
@@ -43,7 +46,10 @@
 
                 .box-title {
                     @extend .font-20, .pad-bottom-20;
-                    color: darken(map-get($colors, 'primary'), 15%);
+                    color: color.adjust(
+                        map.get($colors, "primary"),
+                        $lightness: -15%
+                    );
                 }
             }
         }
@@ -63,7 +69,10 @@
         .about-special-text {
             .special-title {
                 @extend .font-34, .mg-bottom-25;
-                color: darken(map-get($colors, 'primary'), 10%);
+                color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -15%
+                );
                 line-height: 1.3;
             }
 
@@ -79,7 +88,7 @@
                     min-width: 174px;
                     border: 1px solid #ddd;
                     border-radius: 30px 30px 30px 0;
-                    box-shadow: 0 10px 30px rgba(map-get($colors, 'black'), .1);
+                    box-shadow: 0 10px 30px rgba(map.get($colors, "black"), 0.1);
 
                     &:hover {
                         @extend .bg-secundary, .cl-white;
@@ -89,7 +98,7 @@
                     .special-store-buttom-text {
                         font-weight: 700;
 
-                        .buttom-text-available { 
+                        .buttom-text-available {
                             @extend .font-10;
                             display: block;
                         }

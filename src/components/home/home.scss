@@ -1,17 +1,18 @@
-@import '../../scss/_deps';
+@use "sass:color";
+@import "../../scss/_deps";
 
 // BACKGROUND COLORLIB APP
 .home {
     .home-fundo {
         position: relative;
-        background: url('../img/welcome-bg.png') no-repeat;
+        background: url("../img/welcome-bg.png") no-repeat;
         background-position: bottom center;
         background-size: cover;
         height: 900px;
         width: 100%;
         z-index: 1;
         transform-origin: top;
-    }   
+    }
 }
 
 .home-welcome-heading {
@@ -28,7 +29,7 @@
         .home-welcome-c {
             position: absolute;
             font-weight: bold;
-            opacity: .2;
+            opacity: 0.2;
             top: 180px;
             font-size: 350px;
             z-index: -1;
@@ -42,10 +43,10 @@
             @extend .pad-all-15, .mg-top-80;
             display: inline-block;
             border-radius: 24px;
-            transition: .5s;
+            transition: 0.5s;
             width: 100%;
             max-width: 185px;
-            background: rgba(map-get($colors, 'white'), .4);
+            background: rgba(map.get($colors, "white"), 0.4);
 
             &:focus {
                 border: 1px solid #80bdff;
@@ -54,12 +55,16 @@
 
             &::placeholder {
                 @extend .cl-white;
-                opacity: .4;
+                opacity: 0.4;
             }
         }
 
         .home-welcome-button {
-            @extend .pad-all-15, .bg-secundary, .mg-left-15, .cl-white, .font-16;
+            @extend .pad-all-15,
+                .bg-secundary,
+                .mg-left-15,
+                .cl-white,
+                .font-16;
             display: inline-block;
             border-radius: 23px 23px 23px 0;
             font-weight: 700;
@@ -68,7 +73,10 @@
             cursor: pointer;
 
             &:hover {
-                background: darken(map-get($colors, 'primary'), 2%);
+                background: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -2%
+                );
                 transition: 400ms;
             }
         }
@@ -132,27 +140,27 @@
 
         .nav-a {
             @extend .cl-white, .mg-left-10, .font-14;
-            font-family: map-get($fonts, montserrat-semibold);
+            font-family: map.get($fonts, montserrat-semibold);
             text-decoration: none;
             font-weight: 600;
-            transition: color .3s;
+            transition: color 0.3s;
         }
 
         .nav-button {
             @extend .cl-white, .font-16, .mg-left-15, .pad-both-15;
             border-radius: 24px 24px 24px 0;
-            border: 2px solid map-get($colors, 'gray-light');
+            border: 2px solid map.get($colors, "gray-light");
             background: transparent;
             width: 174px;
             text-decoration: none;
             font-weight: 700;
-            transition: color .3s;
+            transition: color 0.3s;
             cursor: pointer;
 
             &:hover {
                 @extend .bg-secundary;
                 transition: 400ms;
-                border: 2px solid map-get($colors, 'secundary');
+                border: 2px solid map.get($colors, "secundary");
             }
         }
     }
@@ -172,14 +180,14 @@
             position: absolute;
             top: 80px;
             width: 90%;
-            padding: 20px;   
+            padding: 20px;
             margin: 0;
-            background: darken(#7e4ee2, 10%);
+            background: color.adjust(#7e4ee2, $lightness: -20%);
 
             .nav-a {
-                font-size: 14px;  
+                font-size: 14px;
                 color: white;
-                padding: 20px 40px 0;   
+                padding: 20px 40px 0;
                 margin: 0;
             }
 

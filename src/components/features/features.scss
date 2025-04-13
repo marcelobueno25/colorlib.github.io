@@ -1,4 +1,7 @@
-@import '../../scss/_deps';
+@use "sass:color";
+@use "sass:map";
+@use "../../scss/_deps" as *;
+@use "../../scss/_components/_config" as *;
 
 .features {
     @extend .font-16, .cl-gray, .bg-white;
@@ -8,7 +11,7 @@
     .features-title {
         @extend .pad-both-80, .text-center, .font-40;
         font-weight: 700;
-        color: darken(map-get($colors, 'primary'), 15%);
+        color: color.adjust(map.get($colors, "primary"), $lightness: -15%);
 
         .features-title-trace {
             @extend .bg-secundary;
@@ -27,7 +30,10 @@
             .features-box-title {
                 @extend .font-20;
                 display: inline;
-                color: darken(map-get($colors, 'primary'), 10%);
+                color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -10%
+                );
             }
 
             .features-box-icon {
@@ -44,9 +50,9 @@
 
         .features-video-play {
             display: flex;
-            border: 20px solid map-get($colors, 'white');
+            border: 20px solid map.get($colors, "white");
             border-radius: 5%;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, .08);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
             height: 100%;
 
             .features-video-play-img {
@@ -55,12 +61,16 @@
             }
 
             .video-play-btn {
-                @extend .font-80, .cl-secundary, .bg-white, .halign-middle, .valign-middle;
+                @extend .font-80,
+                    .cl-secundary,
+                    .bg-white,
+                    .halign-middle,
+                    .valign-middle;
                 position: absolute;
                 left: 50%;
                 top: 50%;
                 display: flex;
-                transition: 500ms;  
+                transition: 500ms;
                 border-radius: 100%;
                 height: 50px;
                 width: 50px;

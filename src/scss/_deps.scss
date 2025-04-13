@@ -1,14 +1,12 @@
-// Dependências Global
-@import
-'_components/_backgrounds',
-'_components/_colors',
-'_components/_config',
-'_components/_font-face',
-'_components/_font-size',
-'_components/_fonts',
-'_components/_helpers',
-'_components/_margin',
-'_components/_padding',
-'_components/reset',
-'_grid/aligns',
-'_grid/grid';
+@forward "_components/_backgrounds";
+@forward "_components/_colors";
+@forward "_components/_config";
+@forward "_components/_font-face";
+@forward "_components/_font-size";
+@forward "_components/_fonts";
+@forward "_components/_helpers";
+@forward "_components/_margin";
+@forward "_components/_padding";
+@forward "_components/reset";
+@forward "_grid/aligns";
+@forward "_grid/grid";

@@ -1,50 +1,25 @@
-//===============================================
-//                                Paleta de Cores
-//===============================================
-/*
-    Exemplo de chamadas:
-
-    background-color: map-get($colors, 'nome-da-cor');
-    @extend %bg-nome-da-cor
-
-*/
+@use "sass:map";
 
 $colors: (
-    'primary': #7e4ee2,
-    'secundary': #fc397d,
-    'amethyst': #a865e1,
-    'kimberly': #726a84,
-    'gray': #726a84,
-    'gray-dark': #6c8791,
-    'gray-light': #d6d6d6,
-    'gray-extra-light': #f5f9fc,
-    'white': #fff,
-    'black': #000,
-    'orange': #f1b922,
-    'success': #24901b,
-    'warning': #e8c121
+    "primary": #7e4ee2,
+    "secundary": #fc397d,
+    "amethyst": #a865e1,
+    "kimberly": #726a84,
+    "gray": #726a84,
+    "gray-dark": #6c8791,
+    "gray-light": #d6d6d6,
+    "gray-extra-light": #f5f9fc,
+    "white": #fff,
+    "black": #000,
+    "orange": #f1b922,
+    "success": #24901b,
+    "warning": #e8c121,
 );
 
-
-//===============================================
-//                                    Font Family
-//===============================================
-/*
-  Link da fonte no Google:
-  https://fonts.google.com/specimen/Montserrat
-
-
-  Exemplo de chamadas:
-
-  font-family: montserrat-estilo-desejado
-  @extend %montserrat-estilo-desejado
-
-*/
-
 $fonts: (
-    'bradesco': 'bradesco',
-    'montserrat-medium': 'montserrat-medium',
-    'montserrat-regular': 'montserrat-regular',
-    'montserrat-bold': 'montserrat-bold',
-    'montserrat-semibold': 'montserrat-semibold'
+    "bradesco": "bradesco",
+    "montserrat-medium": "montserrat-medium",
+    "montserrat-regular": "montserrat-regular",
+    "montserrat-bold": "montserrat-bold",
+    "montserrat-semibold": "montserrat-semibold",
 );

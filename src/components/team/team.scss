@@ -1,4 +1,5 @@
-@import '../../scss/_deps';
+@use "sass:color";
+@import "../../scss/_deps";
 
 .team {
     @extend .font-16, .cl-gray, .bg-white;
@@ -6,7 +7,7 @@
 
     .team-title {
         @extend .pad-both-80, .text-center, .font-22;
-        color: darken(map-get($colors, 'primary'), 10%);
+        color: color.adjust(map.get($colors, "primary"), $lightness: -10%);
 
         .team-title-trace {
             @extend .bg-secundary;
@@ -19,13 +20,12 @@
     }
 
     .team-box {
-
         .team-boxs {
             &:hover .box-square {
                 @extend .cl-white;
                 transition: 600ms;
                 opacity: 1;
-            } 
+            }
         }
 
         .team-box-square {
@@ -41,9 +41,9 @@
 
             .box-square {
                 @extend .halign-middle, .valign-middle, .calign-middle;
-                background: rgba(map-get($colors, 'primary'), .8);
+                background: rgba(map.get($colors, "primary"), 0.8);
                 border-radius: 30px 30px 30px 0;
-                display: flex; 
+                display: flex;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -55,9 +55,12 @@
                     display: flex;
                     flex-direction: row;
 
-                    .square-networks {  
+                    .square-networks {
                         @extend .mg-sides-5, .text-center, .cl-white;
-                        background: lighten(map-get($colors, 'primary'), 15%);
+                        background: color.adjust(
+                            map.get($colors, "primary"),
+                            $lightness: +1%
+                        );
                         border-radius: 10px 10px 10px 0;
                         line-height: 40px;
                         height: 40px;
@@ -71,7 +74,10 @@
             @extend .pad-both-20;
 
             .box-names {
-                color: darken(map-get($colors, 'primary'), 20%);
+                color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -20%
+                );
             }
         }
     }

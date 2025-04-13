@@ -1,16 +1,18 @@
-@each $font in map-keys($fonts) {
+// src/scss/_components/_font-face.scss
+@use "sass:map";
+@use "./_config" as config; // ajuste o caminho conforme a sua pasta
+
+// gera @font-face e utilitários
+@each $font in map.keys(config.$fonts) {
     @font-face {
-        font-family: '#{$font}';
-        src: url('../fonts/#{$font}.eot'),
-        url('../fonts/#{$font}.eot#iefix') format('embedded-opentype'),
-        url('../fonts/#{$font}.ttf') format('truetype'),
-        url('../fonts/#{$font}.woff') format('woff'),
-        url('../fonts/#{$font}.svg') format('svg');
+        font-family: #{map.get(config.$fonts, $font)};
+        src: url("../fonts/#{$font}.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
     }
 
-    //font's (class)
-    $the-font: map-get($fonts, $font);
-    .#{$the-font} { font-family: '#{$font}' }
+    // placeholder para extender
+    %#{$font} {
+        font-family: #{map.get(config.$fonts, $font)}, sans-serif;
+    }
 }

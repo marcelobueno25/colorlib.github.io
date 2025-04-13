@@ -1,6 +1,9 @@
-@import '../../scss/_deps';
+@use "sass:color";
+@use "sass:map";
+@use "../../scss/_deps" as *;
+@use "../../scss/_components/_config" as *;
 
-// COMEÇO DO CONTEÚDO DO FOOTER 
+// COMEÇO DO CONTEÚDO DO FOOTER
 .footer-contact {
     @extend .font-16, .pad-top-100, .cl-gray, .bg-gray-extra-light;
     line-height: 1.5;
@@ -9,12 +12,12 @@
 
     .footer-contact-shadow {
         @extend .pad-bottom-50;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 
         //GET IN TOUCH WITH US!
         .contact-title {
             @extend .font-22;
-            color: darken(map-get($colors, 'primary'), 10%);
+            color: color.adjust(map.get($colors, "primary"), $lightness: -10%);
 
             .contact-title-trace {
                 @extend .bg-secundary, .mg-bottom-10, .mg-top-15;
@@ -38,7 +41,7 @@
         .contact-inputs {
             .form-control {
                 @extend .pad-all-20, .mg-both-10, .font-16;
-                font-family: '#{montserrat-regular}';
+                font-family: "#{montserrat-regular}";
                 border: 1px solid #ced4da;
                 border-radius: 30px 30px 30px 0;
                 width: 100%;
@@ -49,7 +52,7 @@
                 }
 
                 &::placeholder {
-                    opacity: .6;
+                    opacity: 0.6;
                 }
             }
 
@@ -63,12 +66,15 @@
             @extend .cl-white, .bg-secundary, .pad-all-10, .text-center;
             display: inline-block;
             border-radius: 23px 23px 23px 0;
-            transition: 500ms;  
-            width: 100%;    
+            transition: 500ms;
+            width: 100%;
             max-width: 185px;
 
             &:hover {
-                background-color: darken(map-get($colors, 'primary'), 10%);
+                background-color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -10%
+                );
             }
         }
     }
@@ -98,7 +104,7 @@ footer {
         .footer-text {
             @extend .font-70;
             font-weight: bold;
-            color: darken(map-get($colors, 'primary'), 10%);
+            color: color.adjust(map.get($colors, "primary"), $lightness: -10%);
         }
 
         .footer-social {
@@ -129,7 +135,10 @@ footer {
             @extend .pad-both-10;
 
             .footer-menu-link {
-                color: darken(map-get($colors, 'primary'), 30%);
+                color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: -30%
+                );
             }
         }
     }

@@ -1,8 +1,11 @@
-@import '_config';
+@use "sass:list";
+@use "sass:color";
+@use "sass:map"; // disponibiliza map.keys, map.get, etc.
+@use "./_config" as *;
 
 // Gera os backgrounds utilizando a @extend .bg-NOME-DA-COR
-@each $name in map-keys($colors) {
+@each $name in map.keys($colors) {
     .bg-#{$name} {
-        background: map-get($colors, $name);
+        background: map.get($colors, $name);
     }
 }

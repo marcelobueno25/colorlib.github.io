@@ -1,8 +1,8 @@
 /* eslint-env node, es2020 */
 /* eslint-disable import/no-extraneous-dependencies */
 /**
- * Gulp 4 build pipeline – compatível com Node 20
- * Usa Dart Sass e carrega gulp‑imagemin dinamicamente (ESM).
+ * Gulp 4 build pipeline – Node 20 ready, usando Dart Sass.
+ * 2025‑04 – sass‑lint removido (obsoleto). Caso deseje linting, migre para Stylelint.
  */
 
 const { src, dest, watch, series, parallel } = require("gulp");
@@ -21,7 +21,6 @@ const cssnext = require("postcss-cssnext");
 const dartSass = require("sass");
 const gulpSass = require("gulp-sass")(dartSass);
 const groupQueries = require("gulp-group-css-media-queries");
-const sassLint = require("gulp-sass-lint");
 const cleanCSS = require("gulp-clean-css");
 /*************** JS ***************/
 const merge2 = require("merge2");
@@ -75,13 +74,6 @@ function html() {
 // -----------------------------------------------------------------------------
 // Styles – Sass / PostCSS
 // -----------------------------------------------------------------------------
-function sassLintTask() {
-    return src(paths.src.css.all)
-        .pipe(sassLint({ configFile: ".sass-lint.yml" }))
-        .pipe(sassLint.format())
-        .pipe(sassLint.failOnError());
-}
-
 function css() {
     return src(paths.src.css.files)
         .pipe(plumber({ errorHandler: onError }))
@@ -140,14 +132,14 @@ function watcher() {
     watch(paths.src.img, series(images, reload));
     watch(paths.src.js.files, series(js, reload));
     watch(paths.src.fonts, series(fonts, reload));
-    watch(paths.src.css.all, series(sassLintTask, css)); // stream já recarrega
+    watch(paths.src.css.all, series(css)); // stream já recarrega
     watch(paths.src.views.files, series(html, reload));
 }
 
 // -----------------------------------------------------------------------------
 // Build & Default
 // -----------------------------------------------------------------------------
-const build = series(html, sassLintTask, css, js, images, fonts);
+const build = series(html, css, js, images, fonts);
 
 exports.html = html;
 exports.css = css;

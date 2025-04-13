@@ -1,5 +1,5 @@
-@import '../../scss/_deps';
-
+@use "sass:color";
+@import "../../scss/_deps";
 
 .testimonials {
     @extend .pad-top-40, .font-18, .text-center, .bg-white, .pad-bottom-30;
@@ -17,13 +17,15 @@
 
             .quoto {
                 @extend .font-50;
-                color: lighten(map-get($colors, 'primary'), 10%);
+                color: color.adjust(
+                    map.get($colors, "primary"),
+                    $lightness: +10%
+                );
                 padding: 3vh;
             }
 
             .phrases {
                 padding: 20px;
-
             }
 
             .testimonials-phrases {
@@ -31,7 +33,7 @@
                 top: 0;
                 left: -20vh;
                 right: -20vh;
-                opacity: 0; 
+                opacity: 0;
             }
 
             .pharases-star {
@@ -44,7 +46,10 @@
 
                 .pharases-names {
                     @extend .font-22, .pad-both-10;
-                    color: darken(map-get($colors, 'primary'), 20%);
+                    color: color.adjust(
+                        map.get($colors, "primary"),
+                        $lightness: -20%
+                    );
                 }
             }
 
@@ -53,11 +58,11 @@
                 border-radius: 100%;
                 overflow: hidden;
                 display: flex;
-                opacity: .3;
+                opacity: 0.3;
                 width: 70px;
                 height: 70px;
-                border: 6px solid map-get($colors, 'white');
-                box-shadow: 0 4px 20px rgba(map-get($colors, 'black'), .1);
+                border: 6px solid map.get($colors, "white");
+                box-shadow: 0 4px 20px rgba(map.get($colors, "black"), 0.1);
 
                 .people {
                     width: 100%;
@@ -84,16 +89,16 @@
 
             .swiper-pagination-bullet {
                 @extend .bg-white;
-                opacity: .8;
-                border: 3px solid map-get($colors, 'gray');
+                opacity: 0.8;
+                border: 3px solid map.get($colors, "gray");
                 width: 12px;
                 height: 12px;
             }
 
             .swiper-pagination-bullet-active {
-                background: map-get($colors, 'secundary');
-                border: 2px solid map-get($colors, 'secundary');
-            }  
+                background: map.get($colors, "secundary");
+                border: 2px solid map.get($colors, "secundary");
+            }
         }
     }
 
@@ -131,7 +136,10 @@
                 &:hover {
                     @extend .cl-white;
                     transition: 600ms;
-                    background: darken(map-get($colors, 'primary'), 10%);
+                    background: color.adjust(
+                        map.get($colors, "primary"),
+                        $lightness: -10%
+                    );
                 }
             }
         }
