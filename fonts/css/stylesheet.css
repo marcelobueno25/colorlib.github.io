@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'bradescoregular';
+    src: url('../Bradesco.ttf');
+}
+
+@font-face {
+  font-family: 'montserrat-regular';
+  src: url('../montserrat-regular.ttf');
+}
+
+@font-face {
+    font-family: 'montserrat-medium';
+    src: url('../montserrat-medium.ttf');
+}
+
+@font-face {
+    font-family: 'montserrat-semibold';
+    src: url('../montserrat-semibold.ttf');
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url('../montserrat-bold.ttf');
+}
